@@ -127,11 +127,14 @@ for (let i = 0; i < socialPost.length; i++) {
     let {likeNumber} = socialPost[i];
     likeBtn[i].addEventListener('click',
         function() {
+            // se il contatore è uguale al valore originale del post aumenta, altrimenti diminuisce
             if (likeCounter[i].innerHTML == likeNumber) {
                 likeCounter[i].innerHTML++
             } else {
                 likeCounter[i].innerHTML--
             }
+
+            // al click aggiunge la classe, cliccando di nuovo la toglie
             likeBtn[i].classList.toggle('like-button--liked');
         }
     );
