@@ -9,8 +9,10 @@
     3.3 se clicco nuovamente il like viene rimosso e il contatore diminuisce di uno
 */
 
+// seleziona il container dove inserire i post 
 let postCont = document.getElementById('container');
 
+// array di oggetti(ogni oggetto un post)
 let socialPost = [
     {
         'authorName' : 'Phil Mangione',
@@ -49,14 +51,19 @@ let socialPost = [
     }
 ]
 
+// ciclo che genera i post 
 for (let i = 0; i < socialPost.length; i++) {
     
+    // mi salvo i valori delle chiavi dei post 
     const {authorName, profilePic, postDate, postText, postImg, likeNumber} = socialPost[i];
 
+    // inserisco il container del singolo post 
     postCont.innerHTML += `<div class="post"></div>`
 
+    // seleziono il container del singolo post che mi interessa
     const innerPost = document.getElementsByClassName('post')[i];
 
+    // inserisco l'header del post
     innerPost.innerHTML += `
         <div class="post__header">
             <div class="post-meta">                    
@@ -70,12 +77,15 @@ for (let i = 0; i < socialPost.length; i++) {
             </div>
         </div>
     `
+
+    // se il post ha testo lo inserisco
     if (postText !== '') {
         innerPost.innerHTML += `
             <div class="post__text">${postText}</div>
         `
     }
 
+    // se il post ha un immagine la inserisco
     if (postImg !== '') {
         innerPost.innerHTML += `
             <div class="post__image">
@@ -84,6 +94,7 @@ for (let i = 0; i < socialPost.length; i++) {
         `
     }
 
+    // inserisco il footer del post 
     innerPost.innerHTML += `
         <div class="post__footer">
             <div class="likes js-likes">
@@ -102,13 +113,17 @@ for (let i = 0; i < socialPost.length; i++) {
 
 }
 
+// al click sul pulsante like aumento il contatore dei like 
 for (let i = 0; i < socialPost.length; i++) {
+    // dato che ho assegnato a data-postid valore "i" uso quel valore per selezionare il pulsante di ogni post 
     let likeBtn = document.querySelector('[data-postid="' + i + '"]');
     console.log(likeBtn);
 
+    // faccio la stessa cosa per il contatore dei like usando like-counter- con valore "i"
     let likeCounter = document.getElementById('like-counter-' + i)
     console.log(likeCounter);
 
+    // al click aumento il valore del contatore e cambio la classe del pulsante
     likeBtn.addEventListener('click',
         function() {
             likeCounter.innerHTML++
