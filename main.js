@@ -113,15 +113,16 @@ for (let i = 0; i < socialPost.length; i++) {
 
 }
 
+// seleziono tutti i pulsanti in un array
+let likeBtn = document.querySelectorAll('.like-button');
+console.log(likeBtn);
+
+// seleziono i contatori dei like
+let likeCounter = document.querySelectorAll('.js-likes-counter');
+console.log(likeCounter);
+
 // al click sul pulsante like aumento il contatore dei like 
 for (let i = 0; i < socialPost.length; i++) {
-    // dato che ho assegnato a data-postid valore "i" uso quel valore per selezionare il pulsante di ogni post 
-    let likeBtn = document.querySelectorAll('.like-button');
-    console.log(likeBtn);
-
-    // faccio la stessa cosa per il contatore dei like usando like-counter- con valore "i"
-    let likeCounter = document.querySelectorAll('.js-likes-counter');
-    console.log(likeCounter);
 
     // al click aumento il valore del contatore e cambio la classe del pulsante
     let {likeNumber} = socialPost[i];
