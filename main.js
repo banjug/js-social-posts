@@ -88,15 +88,31 @@ for (let i = 0; i < socialPost.length; i++) {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" href="#" data-postid="${i}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">${likeNumber}</b> persone
+                    Piace a <b id="like-counter-${i}" class="js-likes-counter">${likeNumber}</b> persone
                 </div>
             </div> 
         </div>
     `
+
+}
+
+for (let i = 0; i < socialPost.length; i++) {
+    let likeBtn = document.querySelector('[data-postid="' + i + '"]');
+    console.log(likeBtn);
+
+    let likeCounter = document.getElementById('like-counter-' + i)
+    console.log(likeCounter);
+
+    likeBtn.addEventListener('click',
+        function() {
+            likeCounter.innerHTML++
+            likeBtn.classList.add('like-button--liked');
+        }
+    );
 }
