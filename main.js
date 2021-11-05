@@ -116,23 +116,23 @@ for (let i = 0; i < socialPost.length; i++) {
 // al click sul pulsante like aumento il contatore dei like 
 for (let i = 0; i < socialPost.length; i++) {
     // dato che ho assegnato a data-postid valore "i" uso quel valore per selezionare il pulsante di ogni post 
-    let likeBtn = document.querySelector('[data-postid="' + i + '"]');
+    let likeBtn = document.querySelectorAll('.like-button');
     console.log(likeBtn);
 
     // faccio la stessa cosa per il contatore dei like usando like-counter- con valore "i"
-    let likeCounter = document.getElementById('like-counter-' + i);
+    let likeCounter = document.querySelectorAll('.js-likes-counter');
     console.log(likeCounter);
 
     // al click aumento il valore del contatore e cambio la classe del pulsante
     let {likeNumber} = socialPost[i];
-    likeBtn.addEventListener('click',
+    likeBtn[i].addEventListener('click',
         function() {
-            if (likeCounter.innerHTML == likeNumber) {
-                likeCounter.innerHTML++
+            if (likeCounter[i].innerHTML == likeNumber) {
+                likeCounter[i].innerHTML++
             } else {
-                likeCounter.innerHTML--
+                likeCounter[i].innerHTML--
             }
-            likeBtn.classList.toggle('like-button--liked');
+            likeBtn[i].classList.toggle('like-button--liked');
         }
     );
 }
