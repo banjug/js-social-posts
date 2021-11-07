@@ -29,7 +29,7 @@ let socialPost = [
         'postDate' : '4 mesi fa',
         'postText' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         'postImg' : '',
-        'likeNumber' : 80
+        'likeNumber' : 60
     },
 
     {
@@ -38,7 +38,7 @@ let socialPost = [
         'postDate' : '4 mesi fa',
         'postText' : '',
         'postImg' : 'https://unsplash.it/600/300',
-        'likeNumber' : 80
+        'likeNumber' : 35
     },
 
     {
@@ -47,11 +47,12 @@ let socialPost = [
         'postDate' : '4 mesi fa',
         'postText' : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
         'postImg' : 'https://unsplash.it/600/300',
-        'likeNumber' : 80
+        'likeNumber' : 10
     }
 ]
 
 // ciclo che genera i post 
+
 for (let i = 0; i < socialPost.length; i++) {
     
     // mi salvo i valori delle chiavi dei post 
@@ -125,13 +126,18 @@ console.log(likeCounter);
 for (let i = 0; i < socialPost.length; i++) {
 
     // al click aumento il valore del contatore e cambio la classe del pulsante
+    // seleziono il valore della chave likeNumber nell'oggetto "i" dell'array socialPost
     let {likeNumber} = socialPost[i];
+    // ne faccio una copia per confronto
+    const baseLike = socialPost[i].likeNumber;
     likeBtn[i].addEventListener('click',
         function() {
             // se il contatore è uguale al valore originale del post aumenta, altrimenti diminuisce
-            if (likeCounter[i].innerHTML == likeNumber) {
+            if (likeCounter[i].innerHTML == baseLike) {
+                likeNumber++
                 likeCounter[i].innerHTML++
             } else {
+                likeNumber--
                 likeCounter[i].innerHTML--
             }
 
