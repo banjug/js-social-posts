@@ -100,7 +100,7 @@ for (let i = 0; i < socialPost.length; i++) {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="${i}">
+                    <a class="like-button  js-like-button" href="javascript:void(0)" data-postid="${i}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
@@ -126,19 +126,20 @@ console.log(likeCounter);
 for (let i = 0; i < socialPost.length; i++) {
 
     // al click aumento il valore del contatore e cambio la classe del pulsante
-    // seleziono il valore della chave likeNumber nell'oggetto "i" dell'array socialPost
-    let {likeNumber} = socialPost[i];
+    
     // ne faccio una copia per confronto
     const baseLike = socialPost[i].likeNumber;
     likeBtn[i].addEventListener('click',
         function() {
             // se il contatore è uguale al valore originale del post aumenta, altrimenti diminuisce
             if (likeCounter[i].innerHTML == baseLike) {
-                likeNumber++
+                socialPost[i].likeNumber++
                 likeCounter[i].innerHTML++
+                console.log(socialPost[i].likeNumber);
             } else {
-                likeNumber--
+                socialPost[i].likeNumber--
                 likeCounter[i].innerHTML--
+                console.log(socialPost[i].likeNumber);
             }
 
             // al click aggiunge la classe, cliccando di nuovo la toglie
